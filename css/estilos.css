@@ -1,0 +1,195 @@
+/* =========================================================
+   AMPTA Colegio Estudiantes — hoja de estilos
+   Colores sacados del logo oficial. Para cambiar un color
+   en toda la web, basta con cambiarlo aquí.
+   ========================================================= */
+:root {
+  --azul: #12304f;        /* azul marino del logo */
+  --azul-claro: #5b7083;  /* gris azulado "Participar · Colaborar…" */
+  --amarillo: #f6b81a;    /* amarillo AMPTA */
+  --amarillo-suave: #fff6dc;
+  --texto: #2b3440;
+  --gris: #f4f6f8;
+  --blanco: #ffffff;
+  --radio: 14px;
+  --ancho: 1140px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 100px; } /* que la cabecera fija no tape los títulos al saltar a un apartado */
+body {
+  margin: 0;
+  font-family: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--blanco);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--azul); }
+h1, h2, h3, h4 {
+  font-family: "Raleway", system-ui, sans-serif;
+  color: var(--azul);
+  line-height: 1.2;
+  margin: 0 0 .6em;
+}
+h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 800; }
+h3 { font-size: 1.2rem; font-weight: 700; }
+p { margin: 0 0 1em; }
+
+.contenedor { max-width: var(--ancho); margin: 0 auto; padding: 0 20px; }
+.seccion { padding: 70px 0; }
+.seccion--gris { background: var(--gris); }
+.seccion--azul { background: var(--azul); color: #dfe7ef; }
+.seccion--azul h2, .seccion--azul h3 { color: var(--blanco); }
+.centrado { text-align: center; }
+.subrayado::after {
+  content: ""; display: block; width: 60px; height: 4px;
+  background: var(--amarillo); border-radius: 2px; margin-top: 14px;
+}
+.centrado .subrayado::after, .subrayado.centrado::after { margin-left: auto; margin-right: auto; }
+.intro { max-width: 760px; margin: 0 auto 2em; font-size: 1.08rem; }
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-block; padding: 12px 28px; border-radius: 999px;
+  background: var(--amarillo); color: var(--azul); font-weight: 700;
+  text-decoration: none; transition: transform .15s, box-shadow .15s;
+}
+.boton:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(18,48,79,.18); }
+.boton--azul { background: var(--azul); color: var(--blanco); }
+
+/* ---------- Cabecera y menú ---------- */
+.cabecera {
+  position: sticky; top: 0; z-index: 50; background: var(--blanco);
+  box-shadow: 0 2px 12px rgba(18,48,79,.08);
+}
+.cabecera .contenedor { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 80px; }
+.cabecera__logo img { height: 64px; width: auto; }
+.menu { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; align-items: center; }
+.menu > li { position: relative; }
+.menu a {
+  display: block; padding: 10px 14px; text-decoration: none; color: var(--azul);
+  font-weight: 700; font-family: "Raleway", sans-serif; font-size: .95rem; border-radius: 8px;
+}
+.menu a:hover, .menu a[aria-current="page"] { background: var(--amarillo-suave); }
+.menu .submenu {
+  display: none; position: absolute; top: 100%; left: 0; min-width: 210px;
+  background: var(--blanco); list-style: none; margin: 0; padding: 8px;
+  border-radius: 10px; box-shadow: 0 10px 30px rgba(18,48,79,.15);
+}
+.menu li:hover > .submenu, .menu li:focus-within > .submenu { display: block; }
+.menu .submenu a { font-weight: 600; }
+.menu .menu__destacado > a { background: var(--amarillo); }
+.menu-boton {
+  display: none; background: none; border: 2px solid var(--azul); color: var(--azul);
+  border-radius: 8px; padding: 8px 14px; font: 700 1rem "Raleway", sans-serif; cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .menu-boton { display: block; }
+  .menu {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; background: var(--blanco);
+    padding: 10px 16px 20px; box-shadow: 0 12px 20px rgba(18,48,79,.12);
+  }
+  .menu.abierto { display: flex; }
+  .menu .submenu { display: block; position: static; box-shadow: none; padding: 0 0 0 16px; }
+  .cabecera__logo img { height: 54px; }
+}
+
+/* ---------- Portada ---------- */
+.portada {
+  background: #eef1f6 url("../img/imagen-home.jpg") center/cover no-repeat;
+  min-height: 460px; display: flex; align-items: center;
+}
+.portada .contenedor { display: flex; justify-content: flex-end; width: 100%; }
+.portada__texto { max-width: 440px; padding: 40px 0; }
+.portada h1 { font-size: clamp(3.2rem, 9vw, 5.5rem); font-weight: 900; color: var(--amarillo); margin: 0; letter-spacing: 2px; text-shadow: 2px 2px 0 rgba(18,48,79,.12); }
+.portada h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); margin: 0 0 .3em; }
+.portada p { font-size: 1.3rem; color: var(--azul-claro); font-weight: 600; }
+@media (max-width: 700px) {
+  .portada { background-position: left center; min-height: 380px; }
+  .portada__texto { background: rgba(255,255,255,.88); padding: 24px; border-radius: var(--radio); }
+}
+
+.cabecera-pagina {
+  background: var(--azul) url("../img/geometry-bg.jpg") center/cover;
+  background-blend-mode: multiply; padding: 70px 0; text-align: center;
+}
+.cabecera-pagina h1 { color: var(--blanco); font-size: clamp(2rem, 5vw, 3rem); margin: 0; }
+
+/* ---------- Tarjetas y rejillas ---------- */
+.rejilla { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.tarjeta {
+  background: var(--blanco); border-radius: var(--radio); padding: 30px;
+  box-shadow: 0 4px 20px rgba(18,48,79,.08); text-decoration: none; color: inherit;
+  display: block; border-top: 5px solid var(--amarillo); transition: transform .15s;
+}
+a.tarjeta:hover { transform: translateY(-4px); }
+.tarjeta h3 { font-size: 1.4rem; }
+.tarjeta .mas { color: var(--azul); font-weight: 700; }
+
+.dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.dos-columnas img { border-radius: var(--radio); }
+@media (max-width: 800px) { .dos-columnas { grid-template-columns: 1fr; gap: 30px; } }
+
+.razones { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.razones li {
+  display: flex; gap: 14px; align-items: center; font-weight: 700; color: var(--azul);
+  background: var(--blanco); padding: 14px 18px; border-radius: 10px;
+}
+.razones .num {
+  flex: none; width: 38px; height: 38px; border-radius: 50%; background: var(--amarillo);
+  display: grid; place-items: center; font-family: "Raleway", sans-serif; font-weight: 900;
+}
+
+.lista-puntos { padding-left: 1.2em; }
+.lista-puntos li { margin-bottom: .5em; }
+.lista-puntos li::marker { color: var(--amarillo); }
+
+/* ---------- Junta ---------- */
+.junta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin-bottom: 30px; }
+.junta .cargo { background: var(--blanco); border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(18,48,79,.06); }
+.junta .cargo span { display: block; font-size: .85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--azul-claro); font-weight: 700; }
+.junta .cargo strong { font-size: 1.15rem; color: var(--azul); }
+.vocales { columns: 3 180px; list-style: none; padding: 0; }
+.vocales li { padding: 6px 0; border-bottom: 1px dashed #d5dce3; break-inside: avoid; }
+
+/* ---------- Comercios ---------- */
+.rejilla--anchas { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.comercio { display: flex; flex-direction: column; }
+.comercio__logo {
+  height: 140px; display: grid; place-items: center; background: var(--blanco);
+  border-radius: 10px; margin-bottom: 18px; padding: 10px;
+}
+.comercio__logo img { max-height: 120px; width: auto; }
+.comercio .oferta { background: var(--amarillo-suave); border-radius: 10px; padding: 12px 16px; font-weight: 600; }
+.comercio .oferta ol { margin: 0; padding-left: 1.2em; }
+.comercio .datos { list-style: none; padding: 0; margin: auto 0 0; font-size: .95rem; }
+.comercio .datos li { padding: 4px 0; overflow-wrap: anywhere; }
+
+/* ---------- Noticias ---------- */
+.noticia { border-left: 5px solid var(--amarillo); }
+.noticia time { color: var(--azul-claro); font-size: .9rem; font-weight: 700; }
+.aviso-vacio { text-align: center; color: var(--azul-claro); padding: 30px; border: 2px dashed #d5dce3; border-radius: var(--radio); }
+
+/* ---------- Texto legal / documentos ---------- */
+.texto { max-width: 820px; margin: 0 auto; }
+.texto h2 { font-size: 1.5rem; margin-top: 1.6em; }
+.visor-pdf { width: 100%; height: 80vh; border: 1px solid #d5dce3; border-radius: var(--radio); }
+.datos-ampta { background: var(--gris); border-radius: var(--radio); padding: 20px 24px; }
+
+/* ---------- Pie ---------- */
+.pie { background: var(--azul); color: #c9d4df; padding: 60px 0 0; font-size: .95rem; }
+.pie h4 { color: var(--blanco); font-size: 1.1rem; }
+.pie a { color: #fff; }
+.pie .rejilla { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.pie ul { list-style: none; padding: 0; margin: 0; }
+.pie li { padding: 3px 0; }
+.pie__logo { background: var(--blanco); border-radius: 12px; width: 130px; padding: 6px; }
+.pie__legal {
+  margin-top: 40px; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.15);
+  display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; font-size: .85rem;
+}
